@@ -26,6 +26,36 @@ let TasksService = class TasksService {
     }
     findById(id) {
         const task = this.tasks.find((el) => el.id === id);
+        if (!task) {
+            throw new common_1.NotFoundException();
+        }
+        return task;
+    }
+    create(dto) {
+        const newTask = {
+            id: this.tasks.length + 1,
+            title: dto.title,
+            tags: dto.tags,
+            priority: dto.priority,
+            isCompleted: false,
+        };
+        this.tasks.push(newTask);
+        return this.tasks;
+    }
+    updatePut(id, dto) {
+        const task = this.findById(id);
+        task.title = dto.title;
+        task.isCompleted = dto.isCompleted;
+        return task;
+    }
+    updatePatch(id, dto) {
+        const task = this.findById(id);
+        Object.assign(task, dto);
+        return task;
+    }
+    delete(id) {
+        const task = this.findById(id);
+        this.tasks = this.tasks.filter((el) => el.id !== task.id);
         return task;
     }
 };

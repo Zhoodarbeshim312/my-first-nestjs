@@ -12,81 +12,82 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TasksController = void 0;
+exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
-const tasks_service_1 = require("./tasks.service");
-const create_task_dto_1 = require("./dto/create-task.dto");
-const update_task_dto_1 = require("./dto/update-task.dto");
-let TasksController = class TasksController {
-    tasksService;
-    constructor(tasksService) {
-        this.tasksService = tasksService;
+const users_service_1 = require("./users.service");
+const post_user_dto_1 = require("./dto/post-user.dto");
+const put_user_dto_1 = require("./dto/put-user.dto");
+const patch_user_dto_1 = require("./dto/patch-user.dto");
+let UsersController = class UsersController {
+    usersService;
+    constructor(usersService) {
+        this.usersService = usersService;
     }
-    findAll() {
-        return this.tasksService.findAll();
+    getAllUsers() {
+        return this.usersService.getAllUsers();
     }
-    findById(id) {
-        return this.tasksService.findById(Number(id));
+    getByIdUser(id) {
+        return this.usersService.getByIdUser(+id);
     }
-    create(dto) {
-        return this.tasksService.create(dto);
+    postUser(dto) {
+        return this.usersService.postUser(dto);
     }
-    updatePut(id, dto) {
-        return this.tasksService.updatePut(+id, dto);
+    putUser(id, dto) {
+        return this.usersService.putUser(+id, dto);
     }
-    updatePatch(id, dto) {
-        return this.tasksService.updatePatch(+id, dto);
+    patchUser(id, dto) {
+        return this.usersService.patchUser(+id, dto);
     }
-    delete(id) {
-        return this.tasksService.delete(+id);
+    deleteUser(id) {
+        return this.usersService.deleteUser(+id);
     }
 };
-exports.TasksController = TasksController;
+exports.UsersController = UsersController;
 __decorate([
-    (0, common_1.Get)('get-all'),
+    (0, common_1.Get)('get-all-users'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], TasksController.prototype, "findAll", null);
+], UsersController.prototype, "getAllUsers", null);
 __decorate([
-    (0, common_1.Get)('by-id/:id'),
+    (0, common_1.Get)('get-by-id-user/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], TasksController.prototype, "findById", null);
+], UsersController.prototype, "getByIdUser", null);
 __decorate([
-    (0, common_1.Post)('create'),
+    (0, common_1.Post)('post-user'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDto]),
+    __metadata("design:paramtypes", [post_user_dto_1.PostUserDto]),
     __metadata("design:returntype", void 0)
-], TasksController.prototype, "create", null);
+], UsersController.prototype, "postUser", null);
 __decorate([
-    (0, common_1.Put)('Put/:id'),
+    (0, common_1.Put)('put-user/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_task_dto_1.UpdateTaskDto]),
+    __metadata("design:paramtypes", [String, put_user_dto_1.PutUserDto]),
     __metadata("design:returntype", void 0)
-], TasksController.prototype, "updatePut", null);
+], UsersController.prototype, "putUser", null);
 __decorate([
-    (0, common_1.Patch)('Patch/:id'),
+    (0, common_1.Patch)('patch-user/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String, patch_user_dto_1.PatchUserDto]),
     __metadata("design:returntype", void 0)
-], TasksController.prototype, "updatePatch", null);
+], UsersController.prototype, "patchUser", null);
 __decorate([
-    (0, common_1.Delete)('Delete/:id'),
+    (0, common_1.Delete)('delete-user/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], TasksController.prototype, "delete", null);
-exports.TasksController = TasksController = __decorate([
-    (0, common_1.Controller)('tasks'),
-    __metadata("design:paramtypes", [tasks_service_1.TasksService])
-], TasksController);
-//# sourceMappingURL=tasks.controller.js.map
+], UsersController.prototype, "deleteUser", null);
+exports.UsersController = UsersController = __decorate([
+    (0, common_1.Controller)('users'),
+    __metadata("design:paramtypes", [users_service_1.UsersService])
+], UsersController);
+//# sourceMappingURL=users.controller.js.map
